@@ -11,7 +11,8 @@ optdepends=("valgrind: for deep debuggins")
 makedepends=(pkg-config)
 backup=('etc/lighttpd2/lighttpd.conf' 'etc/lighttpd2/angel.conf' 'etc/lighttpd2/mimetypes.conf')
 install=lighttpd2.install
-md5sums=() #generate with 'makepkg -g'
+source=("README")
+md5sums=('18c5a930998b90a76e85389d73ecd639')
 
 _gitroot="git://git.lighttpd.net/lighttpd/lighttpd2.git"
 _gitname="lighttpd"
