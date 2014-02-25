@@ -1,6 +1,6 @@
 # Maintainer: TJ Vanderpoel <tj@rubyists.com>
 pkgname=lighttpd2-git
-pkgver=20110413
+pkgver=20140225
 pkgrel=1
 pkgdesc="The new Lighty: A small, secure, scalable, flexible webserver"
 arch=(i686 x86_64)
@@ -11,25 +11,15 @@ optdepends=("valgrind: for deep debuggins")
 makedepends=(pkg-config musl)
 backup=('etc/lighttpd2/lighttpd.conf' 'etc/lighttpd2/angel.conf' 'etc/lighttpd2/mimetypes.conf')
 install=lighttpd2.install
-source=("README")
-md5sums=('18c5a930998b90a76e85389d73ecd639')
+source=("README" git://git.lighttpd.net/lighttpd/lighttpd2.git)
+md5sums=('18c5a930998b90a76e85389d73ecd639'
+         'SKIP')
 
 _gitroot="git://git.lighttpd.net/lighttpd/lighttpd2.git"
-_gitname="lighttpd"
+_gitname="lighttpd2"
 
 build() {
   cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [ -d $_gitname ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot $_gitname
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting make..."
 
   rm -rf "$srcdir/$_gitname-build"
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
